@@ -1,0 +1,2 @@
+- Thread与Runnable的区别
+  - Runnable降低了线程对象和线程任务的耦合性

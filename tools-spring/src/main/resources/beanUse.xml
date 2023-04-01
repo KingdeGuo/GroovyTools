@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bean4" class="com.kingdeguo.toolsspring.toolsspring.bean.BeanDemo">
+        <constructor-arg name="code" value="1"/>
+        <constructor-arg name="msg" value="hello-world!"/>
+    </bean>
+
+    <bean id="bean5" class="com.kingdeguo.toolsspring.toolsspring.bean.BeanDemoPlus">
+        <!-- 注意下标从0开始 -->
+        <constructor-arg index="0" value="name-comes"/>
+        <constructor-arg index="1" value="18"/>
+        <constructor-arg index="2" ref="bean4"/>
+    </bean>
+
+    <bean id="bean6" class="com.kingdeguo.toolsspring.toolsspring.bean.BeanDemoPlus">
+        <!-- 注意下标从0开始 -->
+        <constructor-arg value="name-comes"/>
+        <constructor-arg value="18"/>
+        <constructor-arg ref="bean4"/>
+    </bean>
+
+</beans>
