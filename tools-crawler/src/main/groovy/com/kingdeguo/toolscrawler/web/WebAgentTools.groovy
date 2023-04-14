@@ -1,4 +1,7 @@
-package com.kingdeguo.toolscrawler
+package com.kingdeguo.toolscrawler.web
 
 class WebAgentTools {
+
 }
+
+

@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>tools-algo</module>
+        <module>tools-db</module>
         <module>tools-groovybasic</module>
         <module>tools-javabasic</module>
         <module>tools-jvm</module>

@@ -2,7 +2,7 @@ package com.kingdeguo.toolscrawler.web
 
 import org.jsoup.Jsoup
 
-class WebTools {
+class HtmlTools {
 
     static def getWebRawText(String url) {
         def text = new URL(url).text
