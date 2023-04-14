@@ -19,6 +19,7 @@
         <module>tools-local</module>
         <module>tools-spring</module>
         <module>tools-springboot</module>
+        <module>tools-test</module>
     </modules>
 
     <groupId>com.kingdeguo</groupId>
