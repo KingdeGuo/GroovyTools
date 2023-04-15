@@ -27,18 +27,18 @@ mvn clean install
 
 # Abstract
 - this project contains following modules
-  - tools-ai: some AI tools
-  - tools-algo: some algorithm tools, such as sort, search, etc.
-  - tools-common: some common tools, such as date, string, etc.
-  - tools-crawler: some crawler tools, such as web crawler, etc.
-  - tools-db: some database tools, such as mysql, redis, etc.
-  - tools-groovybasic: some Groovy basic tools, such as groovy script, etc.
-  - tools-javabasic: some Java basic tools, such as java script, etc.
-  - tools-jvm: some JVM tools, such as jvm script, etc.
-  - tools-local: some local tools, such as local script, etc.
-  - tools-spring: some Spring tools, such as spring script, etc.
-  - tools-springboot: some SpringBoot tools, such as springboot script, etc.
-  - tools-test: some test tools, such as test script, etc.
+  - **tools-ai**: some AI tools
+  - **tools-algo**: some algorithm tools, such as sort, search, etc.
+  - **tools-common**: some common tools, such as date, string, etc.
+  - **tools-crawler**: some crawler tools, such as web crawler, etc.
+  - **tools-db**: some database tools, such as mysql, redis, etc.
+  - **tools-groovybasic**: some Groovy basic tools, such as groovy script, etc.
+  - **tools-javabasic**: some Java basic tools, such as java script, etc.
+  - **tools-jvm**: some JVM tools, such as jvm script, etc.
+  - **tools-local**: some local tools, such as local script, etc.
+  - **tools-spring**: some Spring tools, such as spring script, etc.
+  - **tools-springboot**: some SpringBoot tools, such as springboot script, etc.
+  - **tools-test**: some test tools, such as test script, etc.
 
 # Demo Show
 - you can send email by following code
