@@ -4,8 +4,10 @@
 ![GitHub Repo stars](https://img.shields.io/github/issues/kingdeguo/GroovyTools?style=social)
 
 # Introduction
-Some dev code tools written by groovy. 
-You can use it to generate some code or do some other things.
+- Some dev code tools written by groovy. 
+You can use it to improve you development efficiency
+- you can use it to learn groovy.
+- This project is still under development, and it will be updated regularly.
 
 # How To Use
 - before build this project, you should install java, maven and git
@@ -23,7 +25,7 @@ git clone https://github.com/KingdeGuo/GroovyTools.git
 mvn clean install
 ```
 
-# Basic Usage
+# Abstract
 - this project contains following modules
   - tools-ai
   - tools-algo
@@ -48,3 +50,6 @@ mvn clean install
 ```groovy
 
 ```
+
+# Contribution
+If you have any ideas or improvements, issues and pull requests are welcome. let's go together
