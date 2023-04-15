@@ -1,5 +1,7 @@
 # GroovyTools
 ![GitHub Repo stars](https://img.shields.io/github/stars/kingdeguo/GroovyTools?style=social)
+![GitHub Repo stars](https://img.shields.io/github/forks/kingdeguo/GroovyTools?style=social)
+![GitHub Repo stars](https://img.shields.io/github/issues/kingdeguo/GroovyTools?style=social)
 
 # Introduction
 Some dev code tools written by groovy. 
