@@ -1,18 +1,28 @@
 package com.kingdeguo.toolslocal.toolslocal.file.csv
 
-/**
- * 写入CSV文件: https://string.quest/read/2200768
- * 读取CSV文件: https://blog.csdn.net/jclian91/article/details/79740991
- * 其他参考文档: http://books.elanzone.com/moqui/intro_interface/02_csv.html
- * */
 class CSVFileTools {
 
-    static void main(String[] args) {
-        def file = new File('')
+    /**
+     * 读取csv文件
+     * @param file
+     * @return
+     */
+    static List<String> readCSVFile(File file) {
+        def list = []
+        file.eachLine { line ->
+            list.add(line)
+        }
+        return list
+    }
 
-//        def header = RFC4180.withHeader()
-//                .parse(file.newReader())
-//                .getHeaderMap().keySet()
+    /**
+     * 读取csv文件
+     * @param filePath
+     * @return
+     */
+    static List<String> readCSVFile(String path) {
+        def file = new File(path)
+        return readCSVFile(file)
     }
 
 
