@@ -1,7 +1,6 @@
 package com.kingdeguo.toolslocal.toolslocal.time
 
 import com.google.common.base.Preconditions
-
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -9,17 +8,10 @@ import java.time.LocalTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
-
-
 /**
- *
- * 私有日期类型
- *
- * @author GaoJian
- * @version 1.0
- * @since 2017-09-07 17:03:13
+ * 日期工具类
  */
-class HaoDate extends Date {
+class DateTools extends Date {
 
     private static final long serialVersionUID = 7528567971034268905L
 
@@ -58,7 +50,7 @@ class HaoDate extends Date {
     /**
      * 全零日期的HaoDate实例
      */
-    public static final HaoDate ZERO_INST = new HaoDate(true)
+    public static final DateTools ZERO_INST = new DateTools(true)
 
     /**
      * jdk的LocalDateTime
@@ -74,7 +66,7 @@ class HaoDate extends Date {
      *  私有构造器，专门用于创建全零实例
      * @param zero  是否全零实例，此处只会传true，为了区别其它构造器而设置了这个参数
      */
-    private HaoDate(boolean zero) {
+    private DateTools(boolean zero) {
         this.zero = zero
     }
 
@@ -82,7 +74,7 @@ class HaoDate extends Date {
      *  私有构造器，根据LocalDate创建实例
      * @param localDate jdk的LocalDate
      */
-    private HaoDate(LocalDate localDate) {
+    private DateTools(LocalDate localDate) {
         this(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime())
     }
 
@@ -90,14 +82,14 @@ class HaoDate extends Date {
      *  私有构造器，根据LocalDateTime创建实例
      * @param localDateTime jdk的LocalDateTime
      */
-    private HaoDate(LocalDateTime localDateTime) {
+    private DateTools(LocalDateTime localDateTime) {
         this(Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant()).getTime())
     }
 
     /**
      *  无参构造器
      */
-    HaoDate() {
+    DateTools() {
         super()
         this.localDateTime = this.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()
         this.localDate = localDateTime.toLocalDate()
@@ -109,7 +101,7 @@ class HaoDate extends Date {
      * @param minute    分钟
      * @param second    秒
      */
-    HaoDate(int hour, int minute, int second) {
+    DateTools(int hour, int minute, int second) {
         this(LocalDateTime.of(LocalDate.now(), LocalTime.of(hour, minute, second)))
     }
 
@@ -117,7 +109,7 @@ class HaoDate extends Date {
      *  构造器
      * @param date  长整型时间戳
      */
-    HaoDate(long date) {
+    DateTools(long date) {
         super(date)
         this.localDateTime = this.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()
         this.localDate = localDateTime.toLocalDate()
@@ -135,7 +127,7 @@ class HaoDate extends Date {
      * @param minute    分
      * @param second    秒
      */
-    HaoDate(int year, int month, int day, int hour, int minute, int second) {
+    DateTools(int year, int month, int day, int hour, int minute, int second) {
         this(Date.from(LocalDateTime.of(year, month, day, hour, minute, second).atZone(ZoneId.systemDefault()).toInstant()).getTime())
     }
 
@@ -143,7 +135,7 @@ class HaoDate extends Date {
      *  构造器，根据字符串类型的时间初始化
      * @param source  字符串类型的时间，格式为“年年年年-月月-日日 时时:分分:秒秒”或“年年年年-月月-日日”
      */
-    HaoDate(String source) {
+    DateTools(String source) {
         this(fromString(source).getTime())
         if (isZeroTime(source)) {
             this.zero = true
@@ -220,9 +212,9 @@ class HaoDate extends Date {
      * @param second    要更改的秒
      * @return  当前实例中把分钟和秒替换成给定值之后的新HaoDate实例
      */
-    HaoDate change(int minute, int second) {
+    DateTools change(int minute, int second) {
         assertNotZeroTime()
-        return new HaoDate(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(),
+        return new DateTools(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(),
                 localDateTime.getHour(), minute, second)
     }
 
@@ -233,9 +225,9 @@ class HaoDate extends Date {
      * @param second    要更改的秒
      * @return  当前实例中把时分秒替换成给定值之后的新HaoDate实例
      */
-    HaoDate change(int hour, int minute, int second) {
+    DateTools change(int hour, int minute, int second) {
         assertNotZeroTime()
-        return new HaoDate(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(), hour, minute, second)
+        return new DateTools(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(), hour, minute, second)
     }
 
     /**
@@ -261,7 +253,7 @@ class HaoDate extends Date {
      * @param time 要判断的时间对象
      * @return 给定的时间对象是否为全零
      */
-    static boolean isZeroTime(HaoDate time) {
+    static boolean isZeroTime(DateTools time) {
         return null != time && time.isZeroTime()
     }
 
@@ -293,7 +285,7 @@ class HaoDate extends Date {
      * 年度内显示“月月-日日 时时:分分”；不同年度显示“年年年年-月月-日日 时时:分分”
      */
     String parseForRedesign() {
-        HaoDate now = new HaoDate()
+        DateTools now = new DateTools()
         long difference = (now.getTime() - this.getTime()) / 1000
         if (difference < 60) {
             return "刚刚"
@@ -312,7 +304,7 @@ class HaoDate extends Date {
     }
 
     String parseForRedesignWithDate() {
-        HaoDate now = new HaoDate()
+        DateTools now = new DateTools()
         long difference = (now.getTime() - this.getTime()) / 1000
         if (difference < 60) {
             return "刚刚"
@@ -331,7 +323,7 @@ class HaoDate extends Date {
     }
 
     String time4UserDefine() {
-        HaoDate now = new HaoDate()
+        DateTools now = new DateTools()
         if (org.apache.commons.lang3.time.DateUtils.isSameDay(now, this)) {
             return "今天"
         } else if (org.apache.commons.lang3.time.DateUtils.isSameDay(
@@ -348,18 +340,18 @@ class HaoDate extends Date {
      * 得到本月的第一天
      * @return	HaoDate，可以调用HaoDate的方法获得想要格式的日期字符串格式
      */
-    HaoDate firstDayOfMonth() {
+    DateTools firstDayOfMonth() {
         assertNotZeroTime()
-        return new HaoDate(this.localDate.with(TemporalAdjusters.firstDayOfMonth()))
+        return new DateTools(this.localDate.with(TemporalAdjusters.firstDayOfMonth()))
     }
 
     /**
      * 得到本月的最后一天
      * @return	HaoDate，可以调用HaoDate的方法获得想要格式的日期字符串格式
      */
-    HaoDate lastDayOfMonth() {
+    DateTools lastDayOfMonth() {
         assertNotZeroTime()
-        return new HaoDate(this.localDate.with(TemporalAdjusters.lastDayOfMonth()))
+        return new DateTools(this.localDate.with(TemporalAdjusters.lastDayOfMonth()))
     }
 
     /**
@@ -367,9 +359,9 @@ class HaoDate extends Date {
      * @param offset    偏移量，即当前日期之前（后）多少天，如果是之前，offset为负的整数
      * @return  返回当前日期前（或后）的某一天
      */
-    HaoDate offsetDay(int offset) {
+    DateTools offsetDay(int offset) {
         assertNotZeroTime()
-        return new HaoDate(this.localDateTime.plusDays(offset))
+        return new DateTools(this.localDateTime.plusDays(offset))
     }
 
     /**
@@ -377,9 +369,9 @@ class HaoDate extends Date {
      * @param offset    偏移量，即当前日期之前（后）多少月，如果是之前，offset为负的整数
      * @return  返回当前日期前（或后）的某一月
      */
-    HaoDate offsetMonth(int offset) {
+    DateTools offsetMonth(int offset) {
         assertNotZeroTime()
-        return new HaoDate(this.localDateTime.plusMonths(offset))
+        return new DateTools(this.localDateTime.plusMonths(offset))
     }
 
     /**
@@ -387,9 +379,9 @@ class HaoDate extends Date {
      * @param offset    偏移量，即当前日期之前（后）多少年，如果是之前，offset为负的整数
      * @return  返回当前日期前（或后）的某一年
      */
-    HaoDate offsetYear(int offset) {
+    DateTools offsetYear(int offset) {
         assertNotZeroTime()
-        return new HaoDate(this.localDateTime.plusYears(offset))
+        return new DateTools(this.localDateTime.plusYears(offset))
     }
 
     /**
@@ -397,9 +389,9 @@ class HaoDate extends Date {
      * @param offset    偏移量
      * @return  增加或减去小时后的新HaoDate实例
      */
-    HaoDate offsetHours(int offset) {
+    DateTools offsetHours(int offset) {
         assertNotZeroTime()
-        return new HaoDate(this.localDateTime.plusHours(offset))
+        return new DateTools(this.localDateTime.plusHours(offset))
     }
 
     /**
@@ -407,9 +399,9 @@ class HaoDate extends Date {
      * @param offset    偏移量
      * @return  增加或减去分钟后的新HaoDate实例
      */
-    HaoDate offsetMinutes(int offset) {
+    DateTools offsetMinutes(int offset) {
         assertNotZeroTime()
-        return new HaoDate(this.localDateTime.plusMinutes(offset))
+        return new DateTools(this.localDateTime.plusMinutes(offset))
     }
 
     /**
@@ -417,9 +409,9 @@ class HaoDate extends Date {
      * @param offset    偏移量
      * @return  增加或减去秒后的新HaoDate实例
      */
-    HaoDate offsetSeconds(int offset) {
+    DateTools offsetSeconds(int offset) {
         assertNotZeroTime()
-        return new HaoDate(this.localDateTime.plusSeconds(offset))
+        return new DateTools(this.localDateTime.plusSeconds(offset))
     }
 
     /**
@@ -457,7 +449,7 @@ class HaoDate extends Date {
      * @param direction 方向，负数向历史推算，正数向未来推算
      * @return  从当前天的前一天算起获得最近dateSpan的结束时间
      */
-    HaoDate offsetDateSpan(int offset, int span, boolean direction) {
+    DateTools offsetDateSpan(int offset, int span, boolean direction) {
         assertNotZeroTime()
         if (offset < 0) {
             throw new RuntimeException("Param offset must be greater than or equal 0, not " + offset)
@@ -466,7 +458,7 @@ class HaoDate extends Date {
             throw new RuntimeException("Param span must be greater than 0, not " + span)
         }
         int total = direction ? offset + span : (-(offset + span))
-        return new HaoDate(localDateTime.plusDays(total))
+        return new DateTools(localDateTime.plusDays(total))
     }
 
     /**
@@ -491,7 +483,7 @@ class HaoDate extends Date {
      * @param date2 第二个HaoDate实例
      * @return  在同一年则返回true，否则false
      */
-    static boolean isSameYear(final HaoDate date1, final HaoDate date2) {
+    static boolean isSameYear(final DateTools date1, final DateTools date2) {
         if (date1 == null || date2 == null) {
             throw new IllegalArgumentException("The date must not be null")
         }
@@ -506,9 +498,9 @@ class HaoDate extends Date {
      * 获得当前日期（小时、分钟、秒均为0）
      * @return  当前日期（小时、分钟、秒均为0）
      */
-    HaoDate onlyDate() {
+    DateTools onlyDate() {
         assertNotZeroTime()
-        return new HaoDate(this.year(), this.month(), this.day(), 0, 0, 0)
+        return new DateTools(this.year(), this.month(), this.day(), 0, 0, 0)
     }
 
     /**
@@ -516,26 +508,26 @@ class HaoDate extends Date {
      * @param source   字符串时间，格式可以是“年年年年-月月-日日 时时:分分:秒秒”或者“年年年年-月月-日日”，其余的格式不支持
      * @return  HaoDate实例
      */
-    static HaoDate fromString(String source) {
+    static DateTools fromString(String source) {
         source = source.trim()
         if (source == null || source.isEmpty()) {
             throw new IllegalArgumentException("HaoDate string type error, source:" + source)
         }
 
         if (isZeroTime(source)) {
-            return HaoDate.ZERO_INST
+            return DateTools.ZERO_INST
         }
         try {
             if (source.contains("-")) {
                 if (source.contains(":")) {
-                    return new HaoDate(new SimpleDateFormat(timestampPattern).parse(source).getTime())
+                    return new DateTools(new SimpleDateFormat(timestampPattern).parse(source).getTime())
                 } else {
                     String[] values = source.split("-")
-                    return new HaoDate(LocalDate.of(Integer.valueOf(values[0]), Integer.valueOf(values[1]), Integer.valueOf(values[2])))
+                    return new DateTools(LocalDate.of(Integer.valueOf(values[0]), Integer.valueOf(values[1]), Integer.valueOf(values[2])))
                 }
             } else if (source.matches("^\\d+\$")) {
                 Long lDate = new Long(source)
-                return new HaoDate(lDate)
+                return new DateTools(lDate)
             }
         } catch (Exception e) {
             throw new RuntimeException(String.format("parser %s to HaoDate fail", source))
@@ -557,7 +549,7 @@ class HaoDate extends Date {
      * @param birthday 生日
      * @return 当前年龄
      */
-    String birthday2Age(HaoDate birthday) {
+    String birthday2Age(DateTools birthday) {
         assertNotZeroTime()
         Map<String, Integer> map = this.getDateDiff(birthday)
         int year = map.get("year")
@@ -596,7 +588,7 @@ class HaoDate extends Date {
      * @param haoDate 需要比较的时间
      * @return map = {{"year", *}, {"month", *}, {"day", *}}
      */
-    Map<String, Integer> getDateDiff(HaoDate haoDate) {
+    Map<String, Integer> getDateDiff(DateTools haoDate) {
         assertNotZeroTime()
         int year = this.year() - haoDate.year()
         int month = this.month() - haoDate.month()
@@ -659,9 +651,9 @@ class HaoDate extends Date {
 
 
     /**
-     * 请使用 {@link #aheadOf(HaoDate)} 方法代替此方法, {@link #aheadOf(HaoDate)} 会在使用 {@link #ZERO_INST} 比较大小时抛出异常,
+     * 请使用 {@link #aheadOf(DateTools)} 方法代替此方法, {@link #aheadOf(DateTools)} 会在使用 {@link #ZERO_INST} 比较大小时抛出异常,
      * 而不是返回一个无法预期的结果. <br/>
-     * 此方法在 {@link #ZERO_INST} 与其他时间比较时结果不固定, 使用前请先通过 {@link #isZeroTime(HaoDate)} 判断参与比较的两个对象是否是zero.
+     * 此方法在 {@link #ZERO_INST} 与其他时间比较时结果不固定, 使用前请先通过 {@link #isZeroTime(DateTools)} 判断参与比较的两个对象是否是zero.
      *
      * @param when Date
      * @return boolean
@@ -679,16 +671,16 @@ class HaoDate extends Date {
      * @return boolean
      * @throws IllegalStateException 如果参与比较的时间中有 "zero", 则抛出此异常
      */
-    boolean aheadOf(HaoDate haoDate) {
+    boolean aheadOf(DateTools haoDate) {
         assertNotZeroTime()
         assertNotZeroTime(haoDate)
         return super.before(haoDate)
     }
 
     /**
-     * 请使用 {@link #behindOf(HaoDate)} 方法代替此方法, {@link #behindOf(HaoDate)} 会在使用 {@link #ZERO_INST} 比较大小时抛出异常,
+     * 请使用 {@link #behindOf(DateTools)} 方法代替此方法, {@link #behindOf(DateTools)} 会在使用 {@link #ZERO_INST} 比较大小时抛出异常,
      * 而不是返回一个无法预期的结果. <br/>
-     * 此方法在 {@link #ZERO_INST} 与其他时间比较时结果不固定, 使用前请先通过 {@link #isZeroTime(HaoDate)} 判断参与比较的两个对象是否是zero.
+     * 此方法在 {@link #ZERO_INST} 与其他时间比较时结果不固定, 使用前请先通过 {@link #isZeroTime(DateTools)} 判断参与比较的两个对象是否是zero.
      *
      * @param when Date
      * @return boolean
@@ -706,16 +698,16 @@ class HaoDate extends Date {
      * @return boolean
      * @throws IllegalStateException 如果参与比较的时间中有 "zero", 则抛出此异常
      */
-    boolean behindOf(HaoDate haoDate) {
+    boolean behindOf(DateTools haoDate) {
         assertNotZeroTime()
         assertNotZeroTime(haoDate)
         return super.after(haoDate)
     }
 
     /**
-     * 请使用 {@link #compareWith(HaoDate)} 方法代替此方法,
-     * {@link #compareWith(HaoDate)} 会在使用 {@link #ZERO_INST} 比较大小时抛出异常, 而不是返回一个不确定的值. <br/>
-     * 此方法在 {@link #ZERO_INST} 与其他时间比较时结果不固定, 使用前请先通过 {@link #isZeroTime(HaoDate)} 判断参与比较的两个对象是否是zero.
+     * 请使用 {@link #compareWith(DateTools)} 方法代替此方法,
+     * {@link #compareWith(DateTools)} 会在使用 {@link #ZERO_INST} 比较大小时抛出异常, 而不是返回一个不确定的值. <br/>
+     * 此方法在 {@link #ZERO_INST} 与其他时间比较时结果不固定, 使用前请先通过 {@link #isZeroTime(DateTools)} 判断参与比较的两个对象是否是zero.
      *
      * @param anotherDate Date
      * @return boolean
@@ -739,7 +731,7 @@ class HaoDate extends Date {
      * @return -1 / 1 / 0
      * @throws IllegalStateException 如果参与比较的时间中有 "zero", 则抛出此异常
      */
-    int compareWith(HaoDate haoDate) {
+    int compareWith(DateTools haoDate) {
         assertNotZeroTime()
         assertNotZeroTime(haoDate)
         return super.compareTo(haoDate)
@@ -749,8 +741,8 @@ class HaoDate extends Date {
         assertNotZeroTime(this)
     }
 
-    private static void assertNotZeroTime(HaoDate haoDate) {
-        Preconditions.checkState(haoDate != HaoDate.ZERO_INST, "unsupported zero time")
+    private static void assertNotZeroTime(DateTools haoDate) {
+        Preconditions.checkState(haoDate != DateTools.ZERO_INST, "unsupported zero time")
     }
 
     @Override

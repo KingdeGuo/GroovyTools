@@ -1,10 +1,17 @@
 package com.kingdeguo.toolslocal.toolslocal.file.excel
 
 /**
- * https://mp.weixin.qq.com/s/C7hIGiwPQtRiB-82uWIapQ
- * */
+ * Excel文件工具类
+ */
 class ExcelFileTools {
 
+    /**
+     * 读取Excel文件
+     * @param filePath
+     * @return
+     */
+    static def getExcelFile(filePath) {
 
+    }
 
 }
