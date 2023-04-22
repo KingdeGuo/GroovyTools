@@ -6,8 +6,12 @@ package com.kingdeguo.toolscrawler.web
 class CookieTools {
 
     /**
-     * Cookie Settings
+     * set the cookie
      */
+    static def setCookie() {
+
+    }
+
 
 
 }
